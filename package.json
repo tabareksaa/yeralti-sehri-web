@@ -1,0 +1,10 @@
+{
+  "name": "yeralti-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yeraltı Sehri Dijital Ikiz Paneli web versiyonu",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
