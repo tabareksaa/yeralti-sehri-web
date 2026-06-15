@@ -50,6 +50,7 @@
 
         <nav class="sidebar-nav">
           <button class="nav-button is-active" data-view-target="dashboard" type="button">Canlı Panel</button>
+          <button class="nav-button" data-view-target="map" type="button">Sensör Haritası</button>
           <button class="nav-button" data-view-target="history" type="button">Kritik Uyarılar</button>
         </nav>
 
@@ -189,8 +190,70 @@
             </article>
           </div>
         </section>
+
+        <section class="view-panel is-hidden sensor-map-view" data-view="map">
+          <div class="map-layout">
+            <article class="map-copy-card">
+              <span class="map-section-label">Panel Kullanım Kılavuzu</span>
+              <h2>Sensör Haritası</h2>
+              <p>
+                Yeraltı şehrinde kullanılan sensörlerin konumları, görevleri ve izlediği durumlar bu görsel
+                üzerinde işaretlenmiştir. İlgilendiğiniz sensör alanına tıklayarak kısa açıklamayı
+                görüntüleyebilirsiniz.
+              </p>
+            </article>
+
+            <div class="map-main">
+              <article class="map-toolbar">
+                <div class="map-toolbar-copy">
+                  <strong>Yakınlaştırma</strong>
+                  <span>Fare tekeri veya butonlarla büyütüp, yakınlaştırdıktan sonra sürükleyebilirsiniz.</span>
+                </div>
+
+                <div class="map-toolbar-actions">
+                  <button class="map-tool-button" id="zoomOutButton" type="button" aria-label="Uzaklaştır">-</button>
+                  <div class="zoom-level" id="zoomLevel">100%</div>
+                  <button class="map-tool-button" id="zoomInButton" type="button" aria-label="Yakınlaştır">+</button>
+                  <button class="map-reset-button" id="zoomResetButton" type="button">Sıfırla</button>
+                </div>
+              </article>
+
+              <div class="map-stage" id="mapStage">
+                <div class="map-canvas" id="mapCanvas">
+                  <img
+                    class="map-image"
+                    src="./assets/sensor-map.png"
+                    alt="Yeraltı Şehri sensör yerleşim şeması"
+                  />
+                  <div class="map-hotspots" id="sensorHotspots"></div>
+                </div>
+              </div>
+
+              <article class="map-footer-card">
+                Katmanlı yeraltı şehir modeli üzerindeki bu etkileşimli şema; çevresel izleme, güvenlik, su
+                kontrolü, havalandırma ve yapısal takip bileşenlerinin konum ilişkisini tek ekranda gösterir.
+              </article>
+            </div>
+
+            <article class="map-list-card">
+              <h3>Hızlı Erişim</h3>
+              <div class="sensor-list" id="sensorList"></div>
+            </article>
+          </div>
+        </section>
       </main>
     </section>
+
+    <div class="modal-shell is-hidden" id="sensorModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="true"></div>
+      <article class="sensor-modal" aria-modal="true" role="dialog" aria-labelledby="sensorModalTitle">
+        <button class="modal-close" id="sensorModalClose" type="button" aria-label="Kapat">×</button>
+        <span class="modal-label">Sensör Detayı</span>
+        <h2 id="sensorModalTitle">Sensör</h2>
+        <p class="sensor-modal-copy" id="sensorModalDescription"></p>
+        <div class="sensor-modal-meta" id="sensorModalMeta"></div>
+      </article>
+    </div>
 
     <script src="./app.js"></script>
   </body>
